@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.sangjun.myapplication.p_page">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="환자 정보"
+        android:id="@+id/textView9"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:allowUndo="true"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이름"
+        android:id="@+id/textView10"
+        android:layout_marginTop="50dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/textView9"
+        android:layout_alignStart="@+id/textView11" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="병명"
+        android:id="@+id/textView11"
+        android:layout_marginTop="41dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/textView10"
+        android:layout_alignEnd="@+id/textView12" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="담당 간호사"
+        android:id="@+id/textView12"
+        android:layout_marginTop="39dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/textView11"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText7"
+        android:layout_above="@+id/textView11"
+        android:layout_alignStart="@+id/textView9" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText8"
+        android:layout_alignBottom="@+id/textView11"
+        android:layout_alignStart="@+id/editText7" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText9"
+        android:layout_alignBottom="@+id/textView12"
+        android:layout_alignStart="@+id/editText8" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="위치"
+        android:id="@+id/textView13"
+        android:layout_marginTop="39dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/editText9"
+        android:layout_alignEnd="@+id/textView12" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:id="@+id/button5"
+        android:text="긴급호출"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:textSize="50dp"
+        android:background="#fe0202"
+        android:textColor="#fcf8f8" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="선택"
+        android:id="@+id/button6"
+        android:layout_alignBottom="@+id/textView13"
+        android:layout_alignEnd="@+id/editText9" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText10"
+        android:layout_alignBottom="@+id/textView13"
+        android:layout_alignStart="@+id/editText9"
+        android:layout_toStartOf="@+id/button6" />
+
+</RelativeLayout>
