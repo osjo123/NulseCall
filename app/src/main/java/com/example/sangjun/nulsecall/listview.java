@@ -47,6 +47,9 @@ public class listview extends AppCompatActivity {
         m_Adapter.add("1병동");
         m_Adapter.add("2병동");
         m_Adapter.add("3병동");
+        m_Adapter.add("1병동");
+        m_Adapter.add("2병동");
+        m_Adapter.add("3병동");
 
     }
 
