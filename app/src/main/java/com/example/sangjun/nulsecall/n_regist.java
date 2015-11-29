@@ -1,7 +1,9 @@
 package com.example.sangjun.nulsecall;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,25 +14,31 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
 public class n_regist extends AppCompatActivity {
     Button regist;
     EditText inputid,inputpass,inputname;
     private final String SERVER_ADDRESS = "http://172.30.1.26:80";
     private final String TAG = "id";
+    String id, password, name, role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (android.os.Build.VERSION.SDK_INT > 9) {
-            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-            StrictMode.setThreadPolicy(policy);
-        }
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_n_regist);
 
@@ -42,74 +50,84 @@ public class n_regist extends AppCompatActivity {
         regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(inputname.getText().toString().equals("")||inputid.getText().toString().equals("")||inputpass.getText().toString().equals("")){
-                   Toast.makeText(n_regist.this, "입력오류입니다.", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        String id = inputid.getText().toString();
-                        String password = inputpass.getText().toString();
-                        String name = inputname.getText().toString();
-                        String role ="1";
-                        try{
-                            URL url = new URL(SERVER_ADDRESS + "/nurseInfo.php?"
-                                    + "id="+ URLEncoder.encode(id,"UTF-8")
-                                    + "&password="+ URLEncoder.encode(password,"UTF-8")
-                                    + "&name="+ URLEncoder.encode(name,"UTF-8")
-                                    + "&role="+ URLEncoder.encode(role,"UTF-8"));
-
-                            url.openStream();
-
-                            String result = getXmlData("nurseinsertresult.xml","result");
-
-                            if(result.equals("1")){
-                                Toast.makeText(n_regist.this, "가입완료! 로그인하세요",
-                                Toast.LENGTH_SHORT).show();
-
-                                inputid.setText("");
-                                inputpass.setText("");
-                                inputname.setText("");
-                            }else
-                                Toast.makeText(n_regist.this, "회원 가입 실패(ID 중복)",
-                                        Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(n_regist.this,login.class));
-                            finish();
-                        }catch(Exception e){
-                            Log.e("error",e.getMessage() );
-                        }
-
-                    }
-                });
+                id = inputid.getText().toString();
+                password = inputpass.getText().toString();
+                name = inputname.getText().toString();
+                role = "1";
+                InsertData task1 = new InsertData();
+                task1.execute(new String[]{"http://165.194.34.207:80/nurseInfo.php"});
             }
+
         });
     }
-    private String getXmlData(String filename,String str){
-        String rss = SERVER_ADDRESS + "/";
-        String ret = "";
+    private class InsertData extends AsyncTask<String,Void,Boolean> {
+        ProgressDialog dialog = new ProgressDialog(n_regist.this);
 
-        try{
-            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-            factory.setNamespaceAware(true);
-            XmlPullParser xpp = factory.newPullParser();
-            URL server = new URL(rss+filename);
-            InputStream is = server.openStream();
-            xpp.setInput(is,"UTF-8");
 
-            int eventType = xpp.getEventType();
+        protected void OnPreExecute() {
+            dialog.setMessage("Sending Data.... ");
+            dialog.show();   ////우선수행
+            Log.d("어디", "3");
 
-            while(eventType != XmlPullParser.END_DOCUMENT){
-                if(eventType == XmlPullParser.START_TAG){
-                    if(xpp.getName().equals(str)){
-                        ret = xpp.nextText();
-                    }
-                }
-                eventType = xpp.next();
-            }
-        }catch(Exception e){
-            Log.e("Error2",e.getMessage());
         }
-        return ret;
+        @Override
+        protected Boolean doInBackground(String... urls) {
+////백그라운드 수행 주소 받아서 post방식으로 전송
+            Log.d("어디","4");
+            for (String url : urls) {
+                Log.d(password,"password");
+
+                try {
+                    ArrayList<NameValuePair> pairs = new ArrayList<NameValuePair>();
+
+                    pairs.add(new BasicNameValuePair("id",id));
+                    pairs.add(new BasicNameValuePair("password", password));
+                    pairs.add(new BasicNameValuePair("name", name));
+                   pairs.add(new BasicNameValuePair("role", role));
+                    Log.d(id,"id");
+
+
+                    ////// 입력하는 3개 요소를 namevaluepair 형식으로 만들어 전송한다.
+                    HttpClient client = new DefaultHttpClient();
+                    HttpPost post = new HttpPost(url);
+                    post.setEntity(new UrlEncodedFormEntity(pairs));
+                    HttpResponse response = client.execute(post);
+                } catch ( ClientProtocolException e) {
+                    Toast.makeText(n_regist.this, e.toString(), Toast.LENGTH_LONG).show();
+                    Log.d( id,"id2");
+                    return false;
+                } catch (IOException e){
+                    Log.d("어디",e.toString());
+                    Log.d( id,"id42");
+
+                    e.printStackTrace();
+                    Toast.makeText(n_regist.this, e.toString(), Toast.LENGTH_LONG).show();
+                    return false;
+                }
+
+            }
+
+            return true;
+
+        }
+
+        protected void onPostExecute(Boolean result) {
+
+            if(result == true) {
+                Log.d("어디","5");
+                Log.d("id72", id);
+
+                Toast.makeText(n_regist.this, "Insert Success",Toast.LENGTH_LONG).show();
+            }else{
+
+                Toast.makeText(n_regist.this, "Error",Toast.LENGTH_LONG).show();
+
+            }
+            dialog.dismiss();
+        }
+
+
+
+
     }
 }
