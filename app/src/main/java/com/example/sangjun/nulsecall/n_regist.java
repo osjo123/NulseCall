@@ -22,7 +22,7 @@ import java.net.URLEncoder;
 public class n_regist extends AppCompatActivity {
     Button regist;
     EditText inputid,inputpass,inputname;
-    private final String SERVER_ADDRESS = "http://165.194.34.207:80";
+    private final String SERVER_ADDRESS = "http://172.30.1.26:80";
     private final String TAG = "id";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,7 @@ public class n_regist extends AppCompatActivity {
                                     + "&password="+ URLEncoder.encode(password,"UTF-8")
                                     + "&name="+ URLEncoder.encode(name,"UTF-8")
                                     + "&role="+ URLEncoder.encode(role,"UTF-8"));
+
                             url.openStream();
 
                             String result = getXmlData("nurseinsertresult.xml","result");
