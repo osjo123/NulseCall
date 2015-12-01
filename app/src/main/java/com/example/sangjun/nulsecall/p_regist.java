@@ -35,7 +35,7 @@ public class p_regist extends AppCompatActivity {
 
 
 
-    ArrayList<PatientInfo> listitem = new ArrayList<PatientInfo>();
+    ArrayList<NurseInfo> listitem = new ArrayList<NurseInfo>();
     LauncherActivity.ListItem Item;
 
     @Override
@@ -62,7 +62,7 @@ public class p_regist extends AppCompatActivity {
             public void onClick(View v) {
                 id = etId.getText().toString();
                 password = etPass.getText().toString();
-                name = etPass.getText().toString();
+                name = etName.getText().toString();
                 dx = etDx.getText().toString();
                 nurseName = etNurse.getText().toString();
 

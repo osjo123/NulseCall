@@ -4,7 +4,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
     useLibrary 'org.apache.http.legacy'
-  //  useLibrary 'org.json.http.legacy'
+    //  useLibrary 'org.json.http.legacy'
 
     defaultConfig {
         applicationId "com.example.sangjun.nulsecall"
@@ -27,6 +27,4 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'org.json:json:20151123'
     compile files('json_simple-1.1.jar')
-    compile files('gcm.server.jar')
-    compile 'com.google.android.gms:play-services:8.3.0'
 }

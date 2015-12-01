@@ -13,13 +13,19 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class listview extends AppCompatActivity {
-
+    Intent a;
     private ListView m_ListView;
     private ArrayAdapter<String>  m_Adapter;
+    String name, dx, nurseName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listview);
+        a = getIntent();
+
+        name = a.getExtras().getString("name");
+        dx = a.getExtras().getString("dx");
+        nurseName = a.getExtras().getString("nurseName");
 
 
 
@@ -35,22 +41,22 @@ public class listview extends AppCompatActivity {
 
 
         // ListView에 아이템 추가
-        m_Adapter.add("1병동");
-        m_Adapter.add("2병동");
-        m_Adapter.add("3병동");
-        m_Adapter.add("4병동");
-        m_Adapter.add("5병동");
-        m_Adapter.add("6병동");
-        m_Adapter.add("7병동");
-        m_Adapter.add("8병동");
-        m_Adapter.add("9병동");
-        m_Adapter.add("1병동");
-        m_Adapter.add("2병동");
-        m_Adapter.add("3병동");
-        m_Adapter.add("1병동");
-        m_Adapter.add("2병동");
-        m_Adapter.add("3병동");
-
+        m_Adapter.add("1ward");
+        m_Adapter.add("2ward");
+        m_Adapter.add("3ward");
+        m_Adapter.add("4ward");
+        m_Adapter.add("5ward");
+        m_Adapter.add("6ward");
+        m_Adapter.add("8ward");
+        m_Adapter.add("9ward");
+        m_Adapter.add("10ward");
+        m_Adapter.add("11ward");
+        m_Adapter.add("12ward");
+        m_Adapter.add("13ward");
+        m_Adapter.add("14ward");
+        m_Adapter.add("15ward");
+        m_Adapter.add("16ward");
+        m_Adapter.add("17ward");
     }
 
     // 아이템 터치 이벤트
@@ -63,7 +69,11 @@ public class listview extends AppCompatActivity {
             // 이벤트 발생 시 해당 아이템 위치의 텍스트를 출력
             TextView select_item = (TextView)view;
             Intent intent = new Intent(listview.this,p_page.class);
-            intent.putExtra("NAME",String.valueOf(select_item.getText()));
+            intent.putExtra("name", name);
+            intent.putExtra("dx", dx);
+            intent.putExtra("nurseName", nurseName);
+
+            intent.putExtra("location",String.valueOf(select_item.getText()));
             startActivity(intent);
         }
     };
