@@ -30,7 +30,6 @@ import java.util.ArrayList;
 public class p_regist extends AppCompatActivity {
     Button regist;
     EditText etId, etPass, etName, etDx, etNurse;
-    private final String SERVER_ADDRESS = "http://172.30.1.26:80";
     String id, password, name, dx, nurseName, role;
 
 
@@ -70,7 +69,7 @@ public class p_regist extends AppCompatActivity {
                 InsertData task1 = new InsertData();
             Log.d("어디","1");
                 Log.d(name,"name123");
-            task1.execute(new String[]{"http://165.194.34.207:80/patientInfo.php"});
+            task1.execute(new String[]{"http://165.194.34.58:80/patientInfo.php"});
                 Log.d("어디", "2");
                 Log.d(name,"name");
                 //   String url = "165.194.34.204/patient?id="+id+"$pass="+pass+"$name="+name+"$dx="+dx+"$nurse="+nurse+"$role="+role;

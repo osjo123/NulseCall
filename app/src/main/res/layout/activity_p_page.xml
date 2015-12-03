@@ -82,7 +82,7 @@
         android:layout_width="fill_parent"
         android:layout_height="100dp"
         android:id="@+id/button5"
-        android:text="긴급호출"
+        android:text="담당간호사호출"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:textSize="50dp"

@@ -31,7 +31,6 @@ import java.util.ArrayList;
 public class n_regist extends AppCompatActivity {
     Button regist;
     EditText inputid,inputpass,inputname;
-    private final String SERVER_ADDRESS = "http://172.30.1.26:80";
     private final String TAG = "id";
     String id, password, name, role;
     @Override
@@ -52,7 +51,7 @@ public class n_regist extends AppCompatActivity {
                 name = inputname.getText().toString();
                 role = "1";
                 InsertData task1 = new InsertData();
-                task1.execute(new String[]{"http://165.194.34.207:80/nurseInfo.php"});
+                task1.execute(new String[]{"http://165.194.34.58:80/nurseInfo.php"});
             }
 
         });

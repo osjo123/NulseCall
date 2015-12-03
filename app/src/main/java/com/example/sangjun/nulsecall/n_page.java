@@ -60,7 +60,7 @@ public class n_page extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                url= "http://165.194.34.207:80/check_Emer.php";
+                url= "http://165.194.34.58:80/check_Emer.php";
                 // loginMysql(inputId,inputPass,url);
                 gPHP = new GettingPHP();
                 gPHP.execute(url);
@@ -87,7 +87,7 @@ public class n_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 InsertData task1 = new InsertData();
-                task1.execute(new String[]{"http://165.194.34.207:80/deleteEmer.php"});
+                task1.execute(new String[]{"http://165.194.34.58:80/deleteEmer.php"});
                 patientName.setText("");
                 patientDx.setText("");
                 patientNurse.setText("");

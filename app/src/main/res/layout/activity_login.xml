@@ -53,34 +53,36 @@
         android:layout_height="wrap_content"
         android:text="환자 회원가입"
         android:id="@+id/button2"
-        android:layout_below="@+id/editText2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_marginTop="40dp" />
+        android:layout_marginTop="47dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignEnd="@+id/button4" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="간호사 회원가입"
         android:id="@+id/button3"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_alignEnd="@+id/editText2" />
+        android:layout_alignTop="@+id/button2"
+        android:layout_alignStart="@+id/button7" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="환자 로그인"
         android:id="@+id/button4"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="49dp"
+        android:background="#ff33b5e5"
         android:layout_below="@+id/button2"
-        android:layout_alignStart="@+id/button2" />
+        android:layout_alignParentStart="false" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="간호사 로그인"
         android:id="@+id/button7"
+        android:background="#ff33b5e5"
         android:layout_alignTop="@+id/button4"
-        android:layout_alignEnd="@+id/editText2" />
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -93,7 +93,7 @@ public class p_page extends AppCompatActivity {
                 inputLocation = editLocation.getText().toString();
 
                 InsertData task1 = new InsertData();
-                task1.execute(new String[]{"http://165.194.34.207:80/EmerInfo.php"});
+                task1.execute(new String[]{"http://165.194.34.58:80/EmerInfo.php"});
                 // url= "http://165.194.34.207:80/EmerInfo.php";
 
             }

@@ -80,7 +80,7 @@ public class login extends AppCompatActivity {
                // new ReadJSONFeed().execute("http://165.194.34.207:80/loginInfo.php");
                inputId=id.getText().toString();
                inputPass= password.getText().toString();
-               url= "http://165.194.34.207:80/P_login.php";
+               url= "http://165.194.34.58:80/P_login.php";
                // loginMysql(inputId,inputPass,url);
                 gPHP2 = new GettingPHP2();
                 gPHP2.execute(url);
@@ -106,7 +106,7 @@ public class login extends AppCompatActivity {
                // startActivity(n_page_intent);
                 inputId=id.getText().toString();
                 inputPass= password.getText().toString();
-                url= "http://165.194.34.207:80/loginInfo.php";
+                url= "http://165.194.34.58:80/loginInfo.php";
                 // loginMysql(inputId,inputPass,url);
                 gPHP = new GettingPHP();
                 gPHP.execute(url);
